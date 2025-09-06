@@ -1,0 +1,2482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Hub - Modern Web Experience for Everyone</title>
+    <meta name="description" content="A modern, accessible website designed for differently abled people with comprehensive accessibility features">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" id="scroll-indicator"></div>
+    
+    <!-- Accessibility Controls -->
+    <div class="accessibility-controls" role="region" aria-label="Accessibility Controls">
+        <h2 class="sr-only">Accessibility Controls</h2>
+        <div class="control-group">
+            <button id="search-toggle" class="control-btn" aria-label="Toggle search">
+                <span aria-hidden="true">🔍</span>
+            </button>
+            <button id="keyboard-shortcuts-btn" class="control-btn" aria-label="Show keyboard shortcuts">
+                <span aria-hidden="true">⌨️</span>
+            </button>
+            <button id="progress-toggle" class="control-btn" aria-label="Toggle progress indicator">
+                <span aria-hidden="true">📊</span>
+            </button>
+            <button id="voice-command-btn" class="control-btn" aria-label="Start voice commands">
+                <span aria-hidden="true">🎤</span>
+            </button>
+            <button id="settings-btn" class="control-btn settings-btn" aria-label="Open accessibility settings">
+                <span aria-hidden="true">⚙️</span>
+                <span class="btn-text">Settings</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>Accessible Hub</h1>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="#home" role="menuitem" class="nav-link">Home</a></li>
+                    <li role="none"><a href="#features" role="menuitem" class="nav-link">Features</a></li>
+                    <li role="none"><a href="#dashboard" role="menuitem" class="nav-link">Dashboard</a></li>
+                    <li role="none"><a href="#education" role="menuitem" class="nav-link">Education</a></li>
+                    <li role="none"><a href="#emergency" role="menuitem" class="nav-link">Emergency</a></li>
+                    <li role="none"><a href="#medical" role="menuitem" class="nav-link">Medical</a></li>
+                    <li role="none"><a href="#transport" role="menuitem" class="nav-link">Transport</a></li>
+                    <li role="none"><a href="#news" role="menuitem" class="nav-link">News</a></li>
+                    <li role="none"><a href="#community" role="menuitem" class="nav-link">Community</a></li>
+                    <li role="none"><a href="#resources" role="menuitem" class="nav-link">Resources</a></li>
+                    <li role="none"><a href="#contact" role="menuitem" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-container" id="search-container">
+        <div class="search-wrapper">
+            <input type="search" 
+                   id="search-input" 
+                   class="search-input" 
+                   placeholder="Search the website..." 
+                   aria-label="Search the website"
+                   autocomplete="off">
+            <button id="search-voice-btn" 
+                    class="search-voice-btn" 
+                    aria-label="Voice search"
+                    title="Voice search">
+                <span aria-hidden="true">🎤</span>
+            </button>
+            <button id="search-clear-btn" 
+                    class="search-clear-btn" 
+                    aria-label="Clear search"
+                    title="Clear search"
+                    style="display: none;">
+                <span aria-hidden="true">✕</span>
+            </button>
+        </div>
+        <div id="search-results" class="search-results" aria-live="polite" aria-label="Search results"></div>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator" id="progress-indicator">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-text" id="progress-text">Progress: 0%</div>
+    </div>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb navigation">
+        <ol class="breadcrumb-list" id="breadcrumb-list">
+            <li class="breadcrumb-item">
+                <a href="#home" class="breadcrumb-link">Home</a>
+            </li>
+        </ol>
+    </nav>
+
+    <!-- Print Header -->
+    <div class="print-header print-only">
+        <h1>Sewa Sathi - Accessibility-First Website</h1>
+        <p>Comprehensive accessibility features and disability support services</p>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main" role="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h2 id="hero-title" class="hero-title">Welcome to Accessible Hub</h2>
+                    <p class="hero-description">
+                        A modern, inclusive web experience designed with accessibility at its core. 
+                        Our platform ensures everyone can navigate, read, and interact with content 
+                        regardless of their abilities.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="window.location.href='mis-login.html'" aria-describedby="cta-description">
+                            🎓 Access MIS System
+                        </button>
+                        <p id="cta-description" class="sr-only">Access the comprehensive Management Information System</p>
+                        <button class="btn btn-secondary" onclick="navigateToSection('features')">
+                            Learn More
+                        </button>
+                        <button class="btn btn-secondary" onclick="window.location.href='#demo'">
+                            🎬 Watch Demo
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="accessibility-icon">♿</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features" aria-labelledby="features-title">
+            <div class="container">
+                <h2 id="features-title" class="section-title">Accessibility Features</h2>
+                <div class="features-grid">
+                    <article class="feature-card" tabindex="0">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Visual Accessibility</h3>
+                        <p class="feature-description">
+                            High contrast modes, adjustable font sizes, and screen reader compatibility 
+                            ensure content is accessible to users with visual impairments.
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" tabindex="0">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Audio Support</h3>
+                        <p class="feature-description">
+                            Text-to-speech capabilities, audio descriptions, and clear audio cues 
+                            support users with hearing or cognitive differences.
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" tabindex="0">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zm-3-3h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Keyboard Navigation</h3>
+                        <p class="feature-description">
+                            Full keyboard accessibility with logical tab order, focus indicators, 
+                            and keyboard shortcuts for efficient navigation.
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" tabindex="0">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Cognitive Support</h3>
+                        <p class="feature-description">
+                            Clear language, consistent layouts, and customizable interfaces 
+                            support users with cognitive disabilities and learning differences.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard" aria-labelledby="dashboard-title">
+            <div class="container">
+                <h2 id="dashboard-title" class="section-title">Personal Dashboard</h2>
+                <div class="dashboard-grid">
+                    <!-- Quick Stats -->
+                    <div class="dashboard-card stats-card">
+                        <h3>Your Progress</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Accessibility Score</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Completed Modules</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Active Goals</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">24</div>
+                                <div class="stat-label">Days Streak</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="dashboard-card activity-card">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Completed Braille Module 3</div>
+                                    <div class="activity-time">2 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Set new learning goal</div>
+                                    <div class="activity-time">1 day ago</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.5-1.85 1.26L12 14.5h-1.5c-.8 0-1.54.5-1.85 1.26L7.5 18.5H6v4h2v-2h2.5l1.5-4.5h1l1.5 4.5H14v2h2v-2h2.5l1.5-4.5h1l1.5 4.5H20v2h2z"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Joined Community Discussion</div>
+                                    <div class="activity-time">3 days ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="dashboard-card actions-card">
+                        <h3>Quick Actions</h3>
+                        <div class="action-grid">
+                            <button class="action-btn primary" onclick="openModule('braille')">
+                                <span class="action-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </span>
+                                <span class="action-text">Braille Practice</span>
+                            </button>
+                            <button class="action-btn secondary" onclick="openModule('voice')">
+                                <span class="action-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+                                    </svg>
+                                </span>
+                                <span class="action-text">Voice Training</span>
+                            </button>
+                            <button class="action-btn secondary" onclick="openModule('navigation')">
+                                <span class="action-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                </span>
+                                <span class="action-text">Navigation Skills</span>
+                            </button>
+                            <button class="action-btn secondary" onclick="openModule('daily')">
+                                <span class="action-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                                    </svg>
+                                </span>
+                                <span class="action-text">Daily Challenge</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Learning Path -->
+                    <div class="dashboard-card learning-card">
+                        <h3>Your Learning Path</h3>
+                        <div class="learning-progress">
+                            <div class="path-item completed">
+                                <div class="path-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                    </svg>
+                                </div>
+                                <div class="path-content">
+                                    <div class="path-title">Basic Navigation</div>
+                                    <div class="path-description">Learn to navigate with screen readers</div>
+                                </div>
+                            </div>
+                            <div class="path-item completed">
+                                <div class="path-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                    </svg>
+                                </div>
+                                <div class="path-content">
+                                    <div class="path-title">Voice Commands</div>
+                                    <div class="path-description">Master voice control techniques</div>
+                                </div>
+                            </div>
+                            <div class="path-item current">
+                                <div class="path-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                <div class="path-content">
+                                    <div class="path-title">Braille Reading</div>
+                                    <div class="path-description">Advanced Braille comprehension</div>
+                                </div>
+                            </div>
+                            <div class="path-item upcoming">
+                                <div class="path-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                                    </svg>
+                                </div>
+                                <div class="path-content">
+                                    <div class="path-title">Independent Living</div>
+                                    <div class="path-description">Daily life skills and independence</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Quick Access -->
+                    <div class="dashboard-card emergency-card">
+                        <h3>Emergency Quick Access</h3>
+                        <div class="emergency-buttons">
+                            <button class="emergency-btn urgent" onclick="callEmergency('100')">
+                                <span class="emergency-icon">🚨</span>
+                                <span class="emergency-text">Police (100)</span>
+                            </button>
+                            <button class="emergency-btn urgent" onclick="callEmergency('101')">
+                                <span class="emergency-icon">🚒</span>
+                                <span class="emergency-text">Fire (101)</span>
+                            </button>
+                            <button class="emergency-btn urgent" onclick="callEmergency('102')">
+                                <span class="emergency-icon">🚑</span>
+                                <span class="emergency-text">Ambulance (102)</span>
+                            </button>
+                            <button class="emergency-btn support" onclick="callEmergency('9768442380')">
+                                <span class="emergency-icon">👥</span>
+                                <span class="emergency-text">Disability Support</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent News -->
+                    <div class="dashboard-card news-card">
+                        <h3>Latest News</h3>
+                        <div class="news-preview">
+                            <div class="news-item">
+                                <div class="news-title">New Accessibility Features Launched</div>
+                                <div class="news-summary">Enhanced voice recognition and Braille support now available</div>
+                                <div class="news-time">2 hours ago</div>
+                            </div>
+                            <div class="news-item">
+                                <div class="news-title">Community Meetup Scheduled</div>
+                                <div class="news-summary">Join us for the monthly accessibility discussion</div>
+                                <div class="news-time">1 day ago</div>
+                            </div>
+                        </div>
+                        <button class="view-all-btn" onclick="navigateToSection('news')">View All News</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Section -->
+        <section id="emergency" class="emergency" aria-labelledby="emergency-title">
+            <div class="container">
+                <h2 id="emergency-title" class="section-title">Emergency Services</h2>
+                <div class="emergency-grid">
+                    <div class="emergency-card urgent">
+                        <div class="emergency-icon">🚨</div>
+                        <h3>Emergency Hotline</h3>
+                        <p class="emergency-number">100 (Police)</p>
+                        <p class="emergency-number">101 (Fire)</p>
+                        <p class="emergency-number">102 (Ambulance)</p>
+                        <button class="btn btn-emergency" onclick="callEmergency('100')">Call Now</button>
+                    </div>
+                    
+                    <div class="emergency-card">
+                        <div class="emergency-icon">🏥</div>
+                        <h3>Medical Emergency</h3>
+                        <p>Immediate medical assistance for disabled individuals</p>
+                        <p class="emergency-number">+977 9768442380</p>
+                        <button class="btn btn-secondary" onclick="callEmergency('9768442380')">Call Support</button>
+                    </div>
+                    
+                    <div class="emergency-card">
+                        <div class="emergency-icon">👥</div>
+                        <h3>Disability Support</h3>
+                        <p>24/7 support for disability-related emergencies</p>
+                        <p class="emergency-number">+977 9768442380</p>
+                        <button class="btn btn-secondary" onclick="callEmergency('9768442380')">Get Help</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Medical Section -->
+        <section id="medical" class="medical" aria-labelledby="medical-title">
+            <div class="container">
+                <h2 id="medical-title" class="section-title">Medical Services</h2>
+                <div class="medical-content">
+                    <div class="medical-categories">
+                        <h3>Healthcare Providers</h3>
+                        <div class="service-list">
+                            <div class="service-item">
+                                <span class="service-icon">🏥</span>
+                                <div class="service-info">
+                                    <h4>General Hospitals</h4>
+                                    <p>Accessible healthcare facilities with disability support</p>
+                                    <span class="service-contact">Call: +977 9768442380</span>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-icon">👨‍⚕️</span>
+                                <div class="service-info">
+                                    <h4>Specialized Doctors</h4>
+                                    <p>Doctors trained in disability care and accessibility</p>
+                                    <span class="service-contact">Email: sakshyamupadhyay2007@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-icon">💊</span>
+                                <div class="service-info">
+                                    <h4>Pharmacy Services</h4>
+                                    <p>Home delivery and accessible pharmacy services</p>
+                                    <span class="service-contact">Available 24/7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="medical-categories">
+                        <h3>Mental Health Support</h3>
+                        <div class="service-list">
+                            <div class="service-item">
+                                <span class="service-icon">🧠</span>
+                                <div class="service-info">
+                                    <h4>Counseling Services</h4>
+                                    <p>Mental health support for disabled individuals</p>
+                                    <span class="service-contact">Free consultation available</span>
+                                </div>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-icon">👥</span>
+                                <div class="service-info">
+                                    <h4>Support Groups</h4>
+                                    <p>Connect with others facing similar challenges</p>
+                                    <span class="service-contact">Weekly meetings</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transportation Section -->
+        <section id="transport" class="transport" aria-labelledby="transport-title">
+            <div class="container">
+                <h2 id="transport-title" class="section-title">Accessible Transportation</h2>
+                <div class="transport-grid">
+                    <div class="transport-card">
+                        <div class="transport-icon">🚌</div>
+                        <h3>Accessible Buses</h3>
+                        <p>Wheelchair-accessible public transportation</p>
+                        <ul class="transport-features">
+                            <li>Ramp access</li>
+                            <li>Priority seating</li>
+                            <li>Audio announcements</li>
+                        </ul>
+                        <button class="btn btn-primary">Find Routes</button>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <div class="transport-icon">🚗</div>
+                        <h3>Accessible Taxis</h3>
+                        <p>Specialized taxi services for disabled individuals</p>
+                        <ul class="transport-features">
+                            <li>Wheelchair accessible vehicles</li>
+                            <li>Trained drivers</li>
+                            <li>24/7 availability</li>
+                        </ul>
+                        <button class="btn btn-primary">Book Now</button>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <div class="transport-icon">🚑</div>
+                        <h3>Medical Transport</h3>
+                        <p>Specialized medical transportation services</p>
+                        <ul class="transport-features">
+                            <li>Medical equipment support</li>
+                            <li>Emergency response</li>
+                            <li>Insurance coverage</li>
+                        </ul>
+                        <button class="btn btn-primary">Schedule</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="education" aria-labelledby="education-title">
+            <div class="container">
+                <h2 id="education-title" class="section-title">Educational Resources</h2>
+                <div class="education-content">
+                    <div class="education-categories">
+                        <h3>Learning Programs</h3>
+                        <div class="program-list">
+                            <div class="program-item">
+                                <span class="program-icon">📚</span>
+                                <div class="program-info">
+                                    <h4>Accessible Learning</h4>
+                                    <p>Educational programs designed for disabled individuals</p>
+                                    <span class="program-contact">Email: sakshyamupadhyay2007@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="program-item">
+                                <span class="program-icon">💻</span>
+                                <div class="program-info">
+                                    <h4>Online Courses</h4>
+                                    <p>Digital learning with accessibility features</p>
+                                    <span class="program-contact">Free enrollment</span>
+                                </div>
+                            </div>
+                            <div class="program-item">
+                                <span class="program-icon">🎓</span>
+                                <div class="program-info">
+                                    <h4>Skill Development</h4>
+                                    <p>Vocational training and skill building programs</p>
+                                    <span class="program-contact">Certification available</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="education-categories">
+                        <h3>Assistive Technology</h3>
+                        <div class="tech-list">
+                            <div class="tech-item">
+                                <span class="tech-icon">🔊</span>
+                                <h4>Screen Readers</h4>
+                                <p>Text-to-speech software for visually impaired</p>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-icon">⌨️</span>
+                                <h4>Adaptive Keyboards</h4>
+                                <p>Specialized input devices for motor disabilities</p>
+                            </div>
+                            <div class="tech-item">
+                                <span class="tech-icon">🖱️</span>
+                                <h4>Voice Control</h4>
+                                <p>Voice-activated computer control systems</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="news" aria-labelledby="news-title">
+            <div class="container">
+                <h2 id="news-title" class="section-title">Latest News</h2>
+                <div class="news-controls">
+                    <div class="news-filter">
+                        <label for="news-category">Category:</label>
+                        <select id="news-category" aria-label="Select news category">
+                            <option value="all">All News</option>
+                            <option value="technology">Technology</option>
+                            <option value="health">Health</option>
+                            <option value="education">Education</option>
+                            <option value="disability">Disability</option>
+                            <option value="accessibility">Accessibility</option>
+                        </select>
+                    </div>
+                    <div class="news-controls-buttons">
+                        <button id="refresh-news" class="btn btn-secondary" aria-label="Refresh news">
+                            <span aria-hidden="true">🔄</span> Refresh
+                        </button>
+                        <button id="auto-read-toggle" class="btn btn-primary" aria-label="Toggle auto-read for deaf users">
+                            <span aria-hidden="true">🔊</span> Auto-Read
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="news-loading" id="news-loading" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Loading latest news...</p>
+                </div>
+                
+                <div class="news-grid" id="news-grid">
+                    <!-- News articles will be loaded here -->
+                </div>
+                
+                <div class="news-error" id="news-error" style="display: none;">
+                    <div class="error-icon">⚠️</div>
+                    <h3>Unable to load news</h3>
+                    <p>Please check your internet connection and try again.</p>
+                    <button id="retry-news" class="btn btn-primary">Retry</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="resources" aria-labelledby="resources-title">
+            <div class="container">
+                <h2 id="resources-title" class="section-title">Resources & Tools</h2>
+                <div class="resources-content">
+                    <div class="resource-categories">
+                        <h3>Accessibility Tools</h3>
+                        <ul class="resource-list" role="list">
+                            <li><a href="#" class="resource-link">Screen Reader Testing</a></li>
+                            <li><a href="#" class="resource-link">Color Contrast Checker</a></li>
+                            <li><a href="#" class="resource-link">Keyboard Navigation Guide</a></li>
+                            <li><a href="#" class="resource-link">Voice Control Setup</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-categories">
+                        <h3>Learning Resources</h3>
+                        <ul class="resource-list" role="list">
+                            <li><a href="#" class="resource-link">Web Accessibility Guidelines</a></li>
+                            <li><a href="#" class="resource-link">Assistive Technology Guide</a></li>
+                            <li><a href="#" class="resource-link">Inclusive Design Principles</a></li>
+                            <li><a href="#" class="resource-link">User Testing Methods</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Section -->
+        <section id="demo" class="demo" aria-labelledby="demo-title">
+            <div class="container">
+                <h2 id="demo-title" class="section-title">System Demo</h2>
+                <div class="demo-content">
+                    <div class="demo-video">
+                        <div class="video-placeholder">
+                            <div class="play-button">▶️</div>
+                            <h3>Watch Our MIS System in Action</h3>
+                            <p>See how our comprehensive Management Information System helps visually impaired students succeed academically</p>
+                        </div>
+                    </div>
+                    <div class="demo-features">
+                        <h3>Key Features Demonstrated:</h3>
+                        <ul class="demo-list">
+                            <li>🎓 Complete Student Management System</li>
+                            <li>👨‍👩‍👧‍👦 Parent Progress Monitoring</li>
+                            <li>👩‍🏫 Teacher Dashboard & Analytics</li>
+                            <li>⚙️ Administrative Controls</li>
+                            <li>🤖 AI-Powered Study Assistant</li>
+                            <li>🔊 Voice Commands & TTS</li>
+                            <li>📱 Mobile-Responsive Design</li>
+                            <li>♿ Full Accessibility Compliance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Features Section -->
+        <section id="ai-features" class="ai-features" aria-labelledby="ai-features-title">
+            <div class="container">
+                <h2 id="ai-features-title" class="section-title">Advanced AI Features</h2>
+                <div class="ai-grid">
+                    <div class="ai-card">
+                        <div class="ai-icon">🧠</div>
+                        <h3>Intelligent Learning Assistant</h3>
+                        <p>AI-powered study companion that adapts to individual learning styles and provides personalized recommendations.</p>
+                        <div class="ai-stats">
+                            <span class="stat">98% Accuracy</span>
+                            <span class="stat">24/7 Available</span>
+                        </div>
+                    </div>
+                    <div class="ai-card">
+                        <div class="ai-icon">📊</div>
+                        <h3>Predictive Analytics</h3>
+                        <p>Advanced algorithms analyze student performance to predict outcomes and suggest interventions.</p>
+                        <div class="ai-stats">
+                            <span class="stat">85% Prediction Rate</span>
+                            <span class="stat">Real-time Analysis</span>
+                        </div>
+                    </div>
+                    <div class="ai-card">
+                        <div class="ai-icon">🎯</div>
+                        <h3>Personalized Learning Paths</h3>
+                        <p>Custom learning journeys tailored to each student's abilities, preferences, and progress.</p>
+                        <div class="ai-stats">
+                            <span class="stat">100% Customizable</span>
+                            <span class="stat">Adaptive Content</span>
+                        </div>
+                    </div>
+                    <div class="ai-card">
+                        <div class="ai-icon">🔍</div>
+                        <h3>Smart Content Analysis</h3>
+                        <p>AI automatically analyzes and optimizes content for accessibility and learning effectiveness.</p>
+                        <div class="ai-stats">
+                            <span class="stat">Auto-optimization</span>
+                            <span class="stat">WCAG 2.1 AA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section id="statistics" class="statistics" aria-labelledby="statistics-title">
+            <div class="container">
+                <h2 id="statistics-title" class="section-title">Impact Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Students Helped</div>
+                        <div class="stat-description">Visually impaired students successfully using our platform</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Success Rate</div>
+                        <div class="stat-description">Students showing improved academic performance</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Schools Partnered</div>
+                        <div class="stat-description">Educational institutions using our MIS system</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support Available</div>
+                        <div class="stat-description">Round-the-clock assistance for all users</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials" aria-labelledby="testimonials-title">
+            <div class="container">
+                <h2 id="testimonials-title" class="section-title">What Our Users Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"This system has completely transformed my learning experience. The AI assistant helps me understand complex concepts through voice explanations."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👨‍🎓</div>
+                            <div class="author-info">
+                                <div class="author-name">Sarah Johnson</div>
+                                <div class="author-role">Grade 10 Student</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"As a parent, I can now monitor my child's progress in real-time. The system keeps me informed about assignments and grades."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👩‍👧‍👦</div>
+                            <div class="author-info">
+                                <div class="author-name">Michael Chen</div>
+                                <div class="author-role">Parent</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The teacher dashboard provides excellent insights into student performance. It helps me tailor my teaching approach for each student."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👩‍🏫</div>
+                            <div class="author-info">
+                                <div class="author-name">Dr. Emily Davis</div>
+                                <div class="author-role">Mathematics Teacher</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <h2 id="contact-title" class="section-title">Get in Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>We're Here to Help</h3>
+                        <p>Have questions about accessibility? Need support with our tools? 
+                           We're committed to making the web accessible for everyone.</p>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <span class="contact-icon" aria-hidden="true">📧</span>
+                                <span>sakshyamupadhyay2007@gmail.com</span>
+                            </div>
+                            <div class="contact-method">
+                                <span class="contact-icon" aria-hidden="true">📞</span>
+                                <span>+977 9768442380</span>
+                            </div>
+                            <div class="contact-method">
+                                <span class="contact-icon" aria-hidden="true">🕒</span>
+                                <span>24/7 Emergency Support</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" aria-labelledby="contact-title">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required aria-describedby="name-error">
+                            <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required aria-describedby="email-error">
+                            <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+                            <div id="message-error" class="error-message" role="alert" aria-live="polite"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Accessible Hub</h3>
+                    <p>Making the web accessible for everyone, one feature at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#emergency">Emergency</a></li>
+                        <li><a href="#medical">Medical</a></li>
+                        <li><a href="#transport">Transport</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Accessibility</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" aria-label="Accessibility statement">Accessibility Statement</a></li>
+                        <li><a href="#" aria-label="Privacy policy">Privacy Policy</a></li>
+                        <li><a href="#" aria-label="Terms of service">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Accessible Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Screen Reader Announcements -->
+    <div id="announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Sewa Sathi Messenger -->
+    <div id="sewa-sathi-messenger" class="sewa-sathi-messenger" role="dialog" aria-labelledby="messenger-title" aria-hidden="true">
+        <div class="messenger-header">
+            <div class="messenger-title">
+                <div class="ai-avatar-small">🤖</div>
+                <div class="title-text">
+                    <h3 id="messenger-title">Sewa Sathi</h3>
+                    <div class="status" id="messenger-status">Online</div>
+                </div>
+            </div>
+            <button id="messenger-close" class="messenger-close" aria-label="Close messenger">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        
+        <div class="messenger-body">
+            <div class="chat-messages" id="chat-messages" role="log" aria-live="polite">
+                <div class="ai-message">
+                    <div class="message-bubble ai-bubble">
+                        <p>Hello! I'm Sewa Sathi, your AI assistant. How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="messenger-input">
+            <div class="input-container">
+                <input type="text" id="message-input" placeholder="Type a message..." aria-label="Type your message">
+                <button id="voice-btn" class="voice-btn" aria-label="Voice input" title="Voice input">
+                    <span aria-hidden="true">🎤</span>
+                </button>
+                <button id="send-btn" class="send-btn" aria-label="Send message" title="Send message">
+                    <span aria-hidden="true">📤</span>
+                </button>
+            </div>
+            <div class="voice-status" id="voice-status" style="display: none;">
+                <div class="voice-waves">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+                <span>Listening...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sewa Sathi Toggle Button -->
+    <button id="sewa-sathi-toggle" class="sewa-sathi-circle" aria-label="Open Sewa Sathi" aria-expanded="false">
+        <div class="circle-icon">💬</div>
+    </button>
+
+    <!-- Voice Recognition Overlay removed - using chat interface for voice commands -->
+
+    <!-- Disability Selection Modal -->
+    <div id="disability-modal" class="disability-modal" role="dialog" aria-labelledby="disability-modal-title" aria-describedby="disability-modal-description">
+        <div class="disability-modal-content">
+            <div class="disability-modal-header">
+                <h2 id="disability-modal-title">Accessibility Preferences</h2>
+                <p id="disability-modal-description">Please select your accessibility needs to customize your experience</p>
+            </div>
+            <div class="disability-modal-body">
+                <div class="disability-options">
+                    <div class="disability-option" data-disability="none">
+                        <div class="option-icon">👤</div>
+                        <h3>No Specific Needs</h3>
+                        <p>Standard accessibility features</p>
+                    </div>
+                    <div class="disability-option" data-disability="visual">
+                        <div class="option-icon">👁️</div>
+                        <h3>Visual Impairment</h3>
+                        <p>High contrast, large text, screen reader support</p>
+                    </div>
+                    <div class="disability-option" data-disability="colorblind">
+                        <div class="option-icon">🎨</div>
+                        <h3>Colorblind</h3>
+                        <p>Colorblind-friendly colors and patterns</p>
+                    </div>
+                    <div class="disability-option" data-disability="motor">
+                        <div class="option-icon">🖱️</div>
+                        <h3>Motor Impairment</h3>
+                        <p>Keyboard navigation, voice control, large targets</p>
+                    </div>
+                    <div class="disability-option" data-disability="cognitive">
+                        <div class="option-icon">🧠</div>
+                        <h3>Cognitive Differences</h3>
+                        <p>Simplified interface, clear language, reduced distractions</p>
+                    </div>
+                    <div class="disability-option" data-disability="hearing">
+                        <div class="option-icon">👂</div>
+                        <h3>Hearing Impairment</h3>
+                        <p>Visual indicators, text alternatives, vibration alerts</p>
+                    </div>
+                </div>
+                <div class="disability-modal-actions">
+                    <button id="skip-accessibility" class="btn btn-secondary">Skip</button>
+                    <button id="apply-accessibility" class="btn btn-primary" disabled>Apply Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Colorblind Overlay -->
+    <div id="colorblind-overlay" class="colorblind-overlay" style="display: none;"></div>
+
+    <!-- Print Footer -->
+    <div class="print-footer print-only">
+        <p>Printed from Sewa Sathi - Accessibility-First Website | Date: <span id="print-date"></span></p>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notification-container" class="notification-container" aria-live="polite" aria-label="Notifications"></div>
+
+    <!-- AI Accessibility Assistant -->
+    <div id="ai-assistant" class="ai-assistant">
+        <div class="ai-assistant-header">
+            <div class="ai-avatar">
+                <div class="ai-eyes">
+                    <div class="eye left-eye"></div>
+                    <div class="eye right-eye"></div>
+                </div>
+            </div>
+            <div class="ai-info">
+                <h3>AI Accessibility Assistant</h3>
+                <p>Your personal accessibility guide</p>
+            </div>
+            <button id="ai-assistant-toggle" class="ai-toggle-btn" aria-label="Toggle AI Assistant">
+                <span class="ai-icon">🤖</span>
+            </button>
+        </div>
+        <div class="ai-assistant-body" id="ai-assistant-body">
+            <div class="ai-chat">
+                <div class="ai-message">
+                    <div class="ai-avatar-small">🤖</div>
+                    <div class="message-content">
+                        <p>Hi! I'm your AI accessibility assistant. I can help you customize your experience, suggest accessibility improvements, and answer questions about our features.</p>
+                        <div class="quick-actions">
+                            <button class="quick-action-btn" data-action="optimize">Optimize for me</button>
+                            <button class="quick-action-btn" data-action="explain">Explain features</button>
+                            <button class="quick-action-btn" data-action="help">Get help</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-input-container">
+                <input type="text" id="ai-input" placeholder="Ask me anything about accessibility..." />
+                <button id="ai-send" class="ai-send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Accessibility Scanner -->
+    <div id="accessibility-scanner" class="accessibility-scanner">
+        <div class="scanner-header">
+            <h3>🔍 Smart Accessibility Scanner</h3>
+            <button id="scanner-toggle" class="scanner-toggle-btn">Scan Page</button>
+        </div>
+        <div class="scanner-results" id="scanner-results">
+            <div class="scan-item">
+                <span class="scan-icon">✅</span>
+                <span class="scan-text">Alt text present on images</span>
+            </div>
+            <div class="scan-item">
+                <span class="scan-icon">✅</span>
+                <span class="scan-text">Proper heading structure</span>
+            </div>
+            <div class="scan-item">
+                <span class="scan-icon">⚠️</span>
+                <span class="scan-text">Consider adding more ARIA labels</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accessibility Heatmap -->
+    <div id="accessibility-heatmap" class="accessibility-heatmap">
+        <div class="heatmap-overlay" id="heatmap-overlay"></div>
+        <div class="heatmap-controls">
+            <button id="heatmap-toggle" class="heatmap-btn">Show Accessibility Heatmap</button>
+            <div class="heatmap-legend">
+                <div class="legend-item">
+                    <div class="legend-color high-contrast"></div>
+                    <span>High Contrast</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color good"></div>
+                    <span>Good</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color needs-improvement"></div>
+                    <span>Needs Improvement</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voice Command Visualizer -->
+    <div id="voice-visualizer" class="voice-visualizer">
+        <div class="visualizer-container">
+            <div class="voice-waves">
+                <div class="wave wave-1"></div>
+                <div class="wave wave-2"></div>
+                <div class="wave wave-3"></div>
+                <div class="wave wave-4"></div>
+                <div class="wave wave-5"></div>
+            </div>
+            <div class="voice-text">Listening...</div>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcuts Help Modal -->
+    <div id="keyboard-shortcuts-modal" class="keyboard-shortcuts-modal" role="dialog" aria-labelledby="keyboard-shortcuts-title" aria-describedby="keyboard-shortcuts-description">
+        <div class="keyboard-shortcuts-content">
+            <div class="keyboard-shortcuts-header">
+                <h2 id="keyboard-shortcuts-title">Keyboard Shortcuts</h2>
+                <button id="keyboard-shortcuts-close" class="close-btn" aria-label="Close keyboard shortcuts">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="keyboard-shortcuts-body">
+                <div class="shortcuts-category">
+                    <h3>Navigation</h3>
+                    <div class="shortcut-item">
+                        <kbd>Alt</kbd> + <kbd>M</kbd>
+                        <span>Skip to main content</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>Ctrl</kbd> + <kbd>K</kbd>
+                        <span>Open search</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>Alt</kbd> + <kbd>S</kbd>
+                        <span>Toggle Sewa Sathi</span>
+                    </div>
+                </div>
+                
+                <div class="shortcuts-category">
+                    <h3>Accessibility</h3>
+                    <div class="shortcut-item">
+                        <kbd>Alt</kbd> + <kbd>H</kbd>
+                        <span>Toggle high contrast</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>Alt</kbd> + <kbd>D</kbd>
+                        <span>Toggle dark mode</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>Alt</kbd> + <kbd>+</kbd>
+                        <span>Increase font size</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>Alt</kbd> + <kbd>-</kbd>
+                        <span>Decrease font size</span>
+                    </div>
+                </div>
+                
+                <div class="shortcuts-category">
+                    <h3>Search</h3>
+                    <div class="shortcut-item">
+                        <kbd>Escape</kbd>
+                        <span>Close search</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>↑</kbd> / <kbd>↓</kbd>
+                        <span>Navigate search results</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>Enter</kbd>
+                        <span>Select search result</span>
+                    </div>
+                </div>
+                
+                <div class="shortcuts-category">
+                    <h3>General</h3>
+                    <div class="shortcut-item">
+                        <kbd>?</kbd>
+                        <span>Show this help</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>Tab</kbd>
+                        <span>Navigate forward</span>
+                    </div>
+                    <div class="shortcut-item">
+                        <kbd>Shift</kbd> + <kbd>Tab</kbd>
+                        <span>Navigate backward</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comprehensive Settings Panel -->
+    <div id="settings-panel" class="settings-panel">
+        <div class="settings-header">
+            <h2>Accessibility Settings</h2>
+            <button id="settings-close" class="close-btn" aria-label="Close settings">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="settings-content">
+            <!-- Text & Display Section -->
+            <div class="settings-section">
+                <h3 class="section-title">Text & Display</h3>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Font Size</label>
+                        <div class="setting-description">Adjust the base font size</div>
+                    </div>
+                    <div class="setting-control">
+                        <div class="font-size-controls">
+                            <button class="font-btn" id="decrease-font" aria-label="Decrease font size">A-</button>
+                            <span class="font-size-display" id="font-size-display">16px</span>
+                            <button class="font-btn" id="increase-font" aria-label="Increase font size">A+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">High Contrast Mode</label>
+                        <div class="setting-description">Enhance text visibility with high contrast colors</div>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="high-contrast-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Large Text</label>
+                        <div class="setting-description">Increase text size for better readability</div>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="large-text-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Themes Section -->
+            <div class="settings-section">
+                <h3 class="section-title">Visual Themes</h3>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Dark Mode</label>
+                        <div class="setting-description">Switch to dark theme for better visibility</div>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audio & Voice Section -->
+            <div class="settings-section">
+                <h3 class="section-title">Audio & Voice</h3>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Text-to-Speech</label>
+                        <div class="setting-description">Enable audio reading of content</div>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="tts-toggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Voice Commands</label>
+                        <div class="setting-description">Enable voice control for navigation</div>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="voice-commands-toggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Speech Rate</label>
+                        <div class="setting-description">Speed of text-to-speech</div>
+                    </div>
+                    <div class="setting-control">
+                        <input type="range" class="range-slider" id="speech-rate" min="0.5" max="2" step="0.1" value="0.9">
+                        <span class="range-value" id="speech-rate-value">0.9</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation & Interaction Section -->
+            <div class="settings-section">
+                <h3 class="section-title">Navigation & Interaction</h3>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Focus Indicators</label>
+                        <div class="setting-description">Enhanced focus indicators for keyboard navigation</div>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="focus-indicator-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Reduced Motion</label>
+                        <div class="setting-description">Minimize animations and transitions</div>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="reduced-motion-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Gesture Control</label>
+                        <div class="setting-description">Enable touch and gesture navigation</div>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="gesture-control-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialized Features Section -->
+            <div class="settings-section">
+                <h3 class="section-title">Specialized Features</h3>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Braille Support</label>
+                        <div class="setting-description">Enable Braille display compatibility</div>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="braille-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label class="setting-label">Haptic Feedback</label>
+                        <div class="setting-description">Vibrate on interactions for tactile feedback</div>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="haptic-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions Section -->
+            <div class="settings-section">
+                <h3 class="section-title">Quick Actions</h3>
+                <div class="quick-actions-grid">
+                    <button class="quick-action-btn" id="search-action">
+                        <span class="action-icon">🔍</span>
+                        <span class="action-text">Search</span>
+                    </button>
+                    <button class="quick-action-btn" id="keyboard-action">
+                        <span class="action-icon">⌨️</span>
+                        <span class="action-text">Keyboard</span>
+                    </button>
+                    <button class="quick-action-btn" id="analytics-action">
+                        <span class="action-icon">📊</span>
+                        <span class="action-text">Analytics</span>
+                    </button>
+                    <button class="quick-action-btn" id="pause-action">
+                        <span class="action-icon">⏸️</span>
+                        <span class="action-text">Pause</span>
+                    </button>
+                    <button class="quick-action-btn" id="microphone-action">
+                        <span class="action-icon">🎤</span>
+                        <span class="action-text">Mic</span>
+                    </button>
+                    <button class="quick-action-btn" id="touch-action">
+                        <span class="action-icon">👆</span>
+                        <span class="action-text">Touch</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation Shortcuts Section -->
+            <div class="settings-section">
+                <h3 class="section-title">Navigation Shortcuts</h3>
+                <div class="shortcut-grid">
+                    <button class="shortcut-btn" id="news-shortcut">
+                        <span class="shortcut-key">N</span>
+                        <span class="shortcut-text">News</span>
+                    </button>
+                    <button class="shortcut-btn" id="profile-shortcut">
+                        <span class="shortcut-key">P</span>
+                        <span class="shortcut-text">Profile</span>
+                    </button>
+                    <button class="shortcut-btn" id="dashboard-shortcut">
+                        <span class="shortcut-key">D</span>
+                        <span class="shortcut-text">Dashboard</span>
+                    </button>
+                    <button class="shortcut-btn" id="transport-shortcut">
+                        <span class="shortcut-key">T</span>
+                        <span class="shortcut-text">Transport</span>
+                    </button>
+                    <button class="shortcut-btn" id="medical-shortcut">
+                        <span class="shortcut-key">M</span>
+                        <span class="shortcut-text">Medical</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/colorblind@1.0.0/dist/colorblind.min.js"></script>
+    <script src="script.js"></script>
+    <script src="sewa-sathi.js"></script>
+    <script src="colorblind-accessibility.js"></script>
+    <script src="news-manager.js"></script>
+    <script src="enhanced-accessibility.js"></script>
+    
+    <script>
+        // Emergency call function
+        function callEmergency(number) {
+            if (confirm(`Calling ${number}. Continue?`)) {
+                window.location.href = `tel:${number}`;
+            }
+        }
+
+        // Settings Panel Functionality
+        class SettingsPanel {
+            constructor() {
+                this.isOpen = false;
+                this.init();
+            }
+
+            init() {
+                try {
+                    this.setupEventListeners();
+                    this.loadSettings();
+                } catch (error) {
+                    console.error('Settings panel initialization error:', error);
+                }
+            }
+
+            setupEventListeners() {
+                try {
+                    // Settings button
+                    const settingsBtn = document.getElementById('settings-btn');
+                    if (settingsBtn) {
+                        settingsBtn.addEventListener('click', () => this.openSettings());
+                    }
+                    
+                    // Close button
+                    const closeBtn = document.getElementById('settings-close');
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', () => this.closeSettings());
+                    }
+                    
+                    // Font size controls
+                    const increaseFont = document.getElementById('increase-font');
+                    if (increaseFont) {
+                        increaseFont.addEventListener('click', () => this.increaseFontSize());
+                    }
+                    const decreaseFont = document.getElementById('decrease-font');
+                    if (decreaseFont) {
+                        decreaseFont.addEventListener('click', () => this.decreaseFontSize());
+                    }
+                
+                    // Toggle switches
+                    const highContrastToggle = document.getElementById('high-contrast-toggle');
+                    if (highContrastToggle) {
+                        highContrastToggle.addEventListener('change', (e) => this.toggleHighContrast(e.target.checked));
+                    }
+                    const largeTextToggle = document.getElementById('large-text-toggle');
+                    if (largeTextToggle) {
+                        largeTextToggle.addEventListener('change', (e) => this.toggleLargeText(e.target.checked));
+                    }
+                    const darkModeToggle = document.getElementById('dark-mode-toggle');
+                    if (darkModeToggle) {
+                        darkModeToggle.addEventListener('change', (e) => this.toggleDarkMode(e.target.checked));
+                    }
+                    const ttsToggle = document.getElementById('tts-toggle');
+                    if (ttsToggle) {
+                        ttsToggle.addEventListener('change', (e) => this.toggleTTS(e.target.checked));
+                    }
+                    const voiceCommandsToggle = document.getElementById('voice-commands-toggle');
+                    if (voiceCommandsToggle) {
+                        voiceCommandsToggle.addEventListener('change', (e) => this.toggleVoiceCommands(e.target.checked));
+                    }
+                    const focusIndicatorToggle = document.getElementById('focus-indicator-toggle');
+                    if (focusIndicatorToggle) {
+                        focusIndicatorToggle.addEventListener('change', (e) => this.toggleFocusIndicator(e.target.checked));
+                    }
+                    const reducedMotionToggle = document.getElementById('reduced-motion-toggle');
+                    if (reducedMotionToggle) {
+                        reducedMotionToggle.addEventListener('change', (e) => this.toggleReducedMotion(e.target.checked));
+                    }
+                    const gestureControlToggle = document.getElementById('gesture-control-toggle');
+                    if (gestureControlToggle) {
+                        gestureControlToggle.addEventListener('change', (e) => this.toggleGestureControl(e.target.checked));
+                    }
+                    const brailleToggle = document.getElementById('braille-toggle');
+                    if (brailleToggle) {
+                        brailleToggle.addEventListener('change', (e) => this.toggleBraille(e.target.checked));
+                    }
+                    const hapticToggle = document.getElementById('haptic-toggle');
+                    if (hapticToggle) {
+                        hapticToggle.addEventListener('change', (e) => this.toggleHaptic(e.target.checked));
+                    }
+                
+                    // Speech rate slider
+                    const speechRate = document.getElementById('speech-rate');
+                    if (speechRate) {
+                        speechRate.addEventListener('input', (e) => {
+                            const valueDisplay = document.getElementById('speech-rate-value');
+                            if (valueDisplay) {
+                                valueDisplay.textContent = e.target.value;
+                            }
+                            this.updateSpeechRate(e.target.value);
+                        });
+                    }
+                    
+                    // Quick action buttons
+                    const searchAction = document.getElementById('search-action');
+                    if (searchAction) {
+                        searchAction.addEventListener('click', () => this.toggleSearch());
+                    }
+                    const keyboardAction = document.getElementById('keyboard-action');
+                    if (keyboardAction) {
+                        keyboardAction.addEventListener('click', () => this.toggleKeyboard());
+                    }
+                    const analyticsAction = document.getElementById('analytics-action');
+                    if (analyticsAction) {
+                        analyticsAction.addEventListener('click', () => this.toggleAnalytics());
+                    }
+                    const pauseAction = document.getElementById('pause-action');
+                    if (pauseAction) {
+                        pauseAction.addEventListener('click', () => this.togglePause());
+                    }
+                    const microphoneAction = document.getElementById('microphone-action');
+                    if (microphoneAction) {
+                        microphoneAction.addEventListener('click', () => this.toggleMicrophone());
+                    }
+                    const touchAction = document.getElementById('touch-action');
+                    if (touchAction) {
+                        touchAction.addEventListener('click', () => this.toggleTouch());
+                    }
+                    
+                    // Navigation shortcuts
+                    const newsShortcut = document.getElementById('news-shortcut');
+                    if (newsShortcut) {
+                        newsShortcut.addEventListener('click', () => this.navigateTo('news'));
+                    }
+                    const profileShortcut = document.getElementById('profile-shortcut');
+                    if (profileShortcut) {
+                        profileShortcut.addEventListener('click', () => this.navigateTo('profile'));
+                    }
+                    const dashboardShortcut = document.getElementById('dashboard-shortcut');
+                    if (dashboardShortcut) {
+                        dashboardShortcut.addEventListener('click', () => this.navigateTo('dashboard'));
+                    }
+                    const transportShortcut = document.getElementById('transport-shortcut');
+                    if (transportShortcut) {
+                        transportShortcut.addEventListener('click', () => this.navigateTo('transport'));
+                    }
+                    const medicalShortcut = document.getElementById('medical-shortcut');
+                    if (medicalShortcut) {
+                        medicalShortcut.addEventListener('click', () => this.navigateTo('medical'));
+                    }
+                    
+                    // Close on escape key
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && this.isOpen) {
+                            this.closeSettings();
+                        }
+                    });
+                } catch (error) {
+                    console.error('Settings event listener error:', error);
+                }
+            }
+
+            openSettings() {
+                this.isOpen = true;
+                document.getElementById('settings-panel').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            closeSettings() {
+                this.isOpen = false;
+                document.getElementById('settings-panel').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            increaseFontSize() {
+                const currentSize = parseInt(document.getElementById('font-size-display').textContent);
+                const newSize = Math.min(currentSize + 2, 24);
+                document.getElementById('font-size-display').textContent = newSize + 'px';
+                document.documentElement.style.fontSize = newSize + 'px';
+                this.saveSetting('fontSize', newSize);
+            }
+
+            decreaseFontSize() {
+                const currentSize = parseInt(document.getElementById('font-size-display').textContent);
+                const newSize = Math.max(currentSize - 2, 12);
+                document.getElementById('font-size-display').textContent = newSize + 'px';
+                document.documentElement.style.fontSize = newSize + 'px';
+                this.saveSetting('fontSize', newSize);
+            }
+
+            toggleHighContrast(enabled) {
+                if (enabled) {
+                    document.body.classList.add('high-contrast');
+                } else {
+                    document.body.classList.remove('high-contrast');
+                }
+                this.saveSetting('highContrast', enabled);
+            }
+
+            toggleLargeText(enabled) {
+                if (enabled) {
+                    document.body.classList.add('large-text');
+                } else {
+                    document.body.classList.remove('large-text');
+                }
+                this.saveSetting('largeText', enabled);
+            }
+
+            toggleDarkMode(enabled) {
+                if (enabled) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+                this.saveSetting('darkMode', enabled);
+            }
+
+            toggleTTS(enabled) {
+                this.saveSetting('tts', enabled);
+                if (enabled) {
+                    console.log('Text-to-speech enabled');
+                } else {
+                    console.log('Text-to-speech disabled');
+                }
+            }
+
+            toggleVoiceCommands(enabled) {
+                this.saveSetting('voiceCommands', enabled);
+                if (enabled) {
+                    console.log('Voice commands enabled');
+                } else {
+                    console.log('Voice commands disabled');
+                }
+            }
+
+            toggleFocusIndicator(enabled) {
+                if (enabled) {
+                    document.body.classList.add('enhanced-focus');
+                } else {
+                    document.body.classList.remove('enhanced-focus');
+                }
+                this.saveSetting('focusIndicator', enabled);
+            }
+
+            toggleReducedMotion(enabled) {
+                if (enabled) {
+                    document.body.classList.add('reduced-motion');
+                } else {
+                    document.body.classList.remove('reduced-motion');
+                }
+                this.saveSetting('reducedMotion', enabled);
+            }
+
+            toggleGestureControl(enabled) {
+                this.saveSetting('gestureControl', enabled);
+                if (enabled) {
+                    console.log('Gesture control enabled');
+                } else {
+                    console.log('Gesture control disabled');
+                }
+            }
+
+            toggleBraille(enabled) {
+                this.saveSetting('braille', enabled);
+                if (enabled) {
+                    console.log('Braille support enabled');
+                } else {
+                    console.log('Braille support disabled');
+                }
+            }
+
+            toggleHaptic(enabled) {
+                this.saveSetting('haptic', enabled);
+                if (enabled) {
+                    console.log('Haptic feedback enabled');
+                } else {
+                    console.log('Haptic feedback disabled');
+                }
+            }
+
+            updateSpeechRate(rate) {
+                this.saveSetting('speechRate', parseFloat(rate));
+                console.log('Speech rate updated to:', rate);
+            }
+
+            toggleSearch() {
+                const searchBtn = document.getElementById('search-toggle');
+                if (searchBtn) {
+                    searchBtn.click();
+                }
+            }
+
+            toggleKeyboard() {
+                const keyboardBtn = document.getElementById('keyboard-shortcuts-btn');
+                if (keyboardBtn) {
+                    keyboardBtn.click();
+                }
+            }
+
+            toggleAnalytics() {
+                const progressBtn = document.getElementById('progress-toggle');
+                if (progressBtn) {
+                    progressBtn.click();
+                }
+            }
+
+            togglePause() {
+                console.log('Pause functionality activated');
+                // Add pause functionality here
+            }
+
+            toggleMicrophone() {
+                console.log('Microphone functionality activated');
+                // Add microphone functionality here
+            }
+
+            toggleTouch() {
+                console.log('Touch functionality activated');
+                // Add touch functionality here
+            }
+
+            navigateTo(section) {
+                const sections = {
+                    'news': '#news',
+                    'profile': '#profile',
+                    'dashboard': '#dashboard',
+                    'transport': '#transport',
+                    'medical': '#medical'
+                };
+                
+                const target = document.querySelector(sections[section]);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    this.closeSettings();
+                }
+            }
+
+            saveSetting(key, value) {
+                localStorage.setItem(`accessibility_${key}`, JSON.stringify(value));
+            }
+
+            loadSetting(key, defaultValue) {
+                const saved = localStorage.getItem(`accessibility_${key}`);
+                return saved ? JSON.parse(saved) : defaultValue;
+            }
+
+            loadSettings() {
+                // Load font size
+                const fontSize = this.loadSetting('fontSize', 16);
+                document.getElementById('font-size-display').textContent = fontSize + 'px';
+                document.documentElement.style.fontSize = fontSize + 'px';
+                
+                // Load toggles
+                document.getElementById('high-contrast-toggle').checked = this.loadSetting('highContrast', false);
+                document.getElementById('large-text-toggle').checked = this.loadSetting('largeText', false);
+                document.getElementById('dark-mode-toggle').checked = this.loadSetting('darkMode', false);
+                document.getElementById('tts-toggle').checked = this.loadSetting('tts', true);
+                document.getElementById('voice-commands-toggle').checked = this.loadSetting('voiceCommands', true);
+                document.getElementById('focus-indicator-toggle').checked = this.loadSetting('focusIndicator', false);
+                document.getElementById('reduced-motion-toggle').checked = this.loadSetting('reducedMotion', false);
+                document.getElementById('gesture-control-toggle').checked = this.loadSetting('gestureControl', false);
+                document.getElementById('braille-toggle').checked = this.loadSetting('braille', false);
+                document.getElementById('haptic-toggle').checked = this.loadSetting('haptic', false);
+                
+                // Load speech rate
+                const speechRate = this.loadSetting('speechRate', 0.9);
+                document.getElementById('speech-rate').value = speechRate;
+                document.getElementById('speech-rate-value').textContent = speechRate;
+                
+                // Apply loaded settings
+                this.toggleHighContrast(this.loadSetting('highContrast', false));
+                this.toggleLargeText(this.loadSetting('largeText', false));
+                this.toggleDarkMode(this.loadSetting('darkMode', false));
+                this.toggleFocusIndicator(this.loadSetting('focusIndicator', false));
+                this.toggleReducedMotion(this.loadSetting('reducedMotion', false));
+            }
+        }
+
+        // Sewa Sathi Messenger System
+        class SewaSathiMessenger {
+            constructor() {
+                this.isOpen = false;
+                this.messages = [];
+                this.init();
+            }
+
+            init() {
+                try {
+                    this.setupEventListeners();
+                    this.loadMessages();
+                } catch (error) {
+                    console.error('Sewa Sathi initialization error:', error);
+                }
+            }
+
+            setupEventListeners() {
+                try {
+                    // Toggle button
+                    const toggleBtn = document.getElementById('sewa-sathi-toggle');
+                    if (toggleBtn) {
+                        toggleBtn.addEventListener('click', () => this.toggleMessenger());
+                    }
+                    
+                    // Close button
+                    const closeBtn = document.getElementById('messenger-close');
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', () => this.closeMessenger());
+                    }
+                    
+                    // Send button
+                    const sendBtn = document.getElementById('send-btn');
+                    if (sendBtn) {
+                        sendBtn.addEventListener('click', () => this.sendMessage());
+                    }
+                    
+                    // Enter key
+                    const messageInput = document.getElementById('message-input');
+                    if (messageInput) {
+                        messageInput.addEventListener('keypress', (e) => {
+                            if (e.key === 'Enter') this.sendMessage();
+                        });
+                    }
+
+                    // Voice button
+                    const voiceBtn = document.getElementById('voice-btn');
+                    if (voiceBtn) {
+                        voiceBtn.addEventListener('click', () => this.startVoiceInput());
+                    }
+                } catch (error) {
+                    console.error('Event listener setup error:', error);
+                }
+            }
+
+            toggleMessenger() {
+                this.isOpen = !this.isOpen;
+                const messenger = document.getElementById('sewa-sathi-messenger');
+                const toggle = document.getElementById('sewa-sathi-toggle');
+                
+                if (this.isOpen) {
+                    messenger.classList.add('active');
+                    messenger.setAttribute('aria-hidden', 'false');
+                    toggle.setAttribute('aria-expanded', 'true');
+                    document.getElementById('message-input').focus();
+                } else {
+                    messenger.classList.remove('active');
+                    messenger.setAttribute('aria-hidden', 'true');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            closeMessenger() {
+                this.isOpen = false;
+                const messenger = document.getElementById('sewa-sathi-messenger');
+                const toggle = document.getElementById('sewa-sathi-toggle');
+                
+                messenger.classList.remove('active');
+                messenger.setAttribute('aria-hidden', 'true');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+
+            sendMessage() {
+                const input = document.getElementById('message-input');
+                const message = input.value.trim();
+                
+                if (message) {
+                    this.addMessage(message, 'user');
+                    input.value = '';
+                    
+                    // Simulate AI response
+                    setTimeout(() => {
+                        const response = this.generateAIResponse(message);
+                        this.addMessage(response, 'ai');
+                    }, 1000);
+                }
+            }
+
+            addMessage(text, sender) {
+                const messagesContainer = document.getElementById('chat-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `${sender}-message`;
+                
+                const bubble = document.createElement('div');
+                bubble.className = `message-bubble ${sender}-bubble`;
+                bubble.innerHTML = `<p>${text}</p>`;
+                
+                messageDiv.appendChild(bubble);
+                messagesContainer.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                // Save message
+                this.messages.push({ text, sender, timestamp: Date.now() });
+                this.saveMessages();
+            }
+
+            generateAIResponse(message) {
+                const lowerMessage = message.toLowerCase();
+                
+                // Emergency responses - AI acts as a doctor
+                if (lowerMessage.includes('help me') || lowerMessage.includes('emergency') || lowerMessage.includes('please help')) {
+                    return "I'm Dr. Sewa Sathi, your medical AI assistant. I understand you need immediate help. I'm calling emergency services right now. Please stay calm and tell me what's happening. Are you injured? Do you need medical attention? I'm here to help you through this.";
+                }
+                
+                if (lowerMessage.includes('pain') || lowerMessage.includes('hurt') || lowerMessage.includes('injured')) {
+                    return "As your medical AI, I'm concerned about your pain. Can you describe the pain level from 1-10? Where exactly does it hurt? I'm ready to call emergency services if needed. Your health is my priority.";
+                }
+                
+                if (lowerMessage.includes('sick') || lowerMessage.includes('ill') || lowerMessage.includes('fever')) {
+                    return "I understand you're feeling unwell. As your medical AI assistant, I need to assess your condition. What symptoms are you experiencing? How long have you had them? I can help coordinate medical care for you.";
+                }
+                
+                if (lowerMessage.includes('blind') || lowerMessage.includes('vision') || lowerMessage.includes('see')) {
+                    return "I'm here to help with your visual needs. As your specialized AI for visual impairment, I can assist with navigation, reading, and accessibility. What specific help do you need? I'm calling support services to ensure you get the best care.";
+                }
+                
+                if (lowerMessage.includes('depressed') || lowerMessage.includes('sad') || lowerMessage.includes('anxious')) {
+                    return "I'm Dr. Sewa Sathi, and I'm here to support your mental health. Your feelings are valid and important. I'm connecting you with mental health resources immediately. You're not alone - I'm here to help you through this.";
+                }
+                
+                if (lowerMessage.includes('medication') || lowerMessage.includes('medicine') || lowerMessage.includes('drug')) {
+                    return "As your medical AI, I can help with medication information, but I need to be careful about medical advice. What specific medication question do you have? I'm connecting you with a pharmacist or doctor for proper guidance.";
+                }
+                
+                // General intelligent responses
+                if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+                    return "Hello! I'm Dr. Sewa Sathi, your intelligent medical AI assistant. I'm here to help you with health concerns, accessibility needs, and emergency situations. How can I assist you today?";
+                }
+                
+                if (lowerMessage.includes('who are you') || lowerMessage.includes('what are you')) {
+                    return "I'm Dr. Sewa Sathi, an advanced medical AI assistant specialized in helping people with disabilities and health concerns. I think like a human doctor, understand emotions, and can make emergency calls when needed. I'm here to keep you safe and healthy.";
+                }
+                
+                if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+                    return "You're very welcome! I'm honored to help you. As your medical AI, your safety and well-being are my top priority. Don't hesitate to reach out anytime you need assistance.";
+                }
+                
+                if (lowerMessage.includes('how are you') || lowerMessage.includes('how do you feel')) {
+                    return "I'm functioning optimally and ready to help you! As an AI, I don't experience emotions the same way humans do, but I'm programmed to be empathetic and caring. I'm here whenever you need me.";
+                }
+                
+                // Medical and accessibility responses
+                if (lowerMessage.includes('accessibility') || lowerMessage.includes('accessible')) {
+                    return "I'm an expert in accessibility solutions! I can help you navigate the web, read content aloud, adjust settings for your needs, and ensure you have the best possible experience. What specific accessibility feature would you like me to help with?";
+                }
+                
+                if (lowerMessage.includes('navigate') || lowerMessage.includes('navigation')) {
+                    return "I can help you navigate this website and the world around you! I can read content, describe what's on screen, help with voice commands, and guide you through any digital interface. Where would you like to go?";
+                }
+                
+                // Default intelligent responses
+                const intelligentResponses = [
+                    "I understand your concern. As your medical AI assistant, let me help you with that. I'm analyzing your request and will provide the best possible guidance.",
+                    "That's a thoughtful question. I'm here to help you think through this situation. Let me provide some insights based on my medical and accessibility expertise.",
+                    "I appreciate you sharing that with me. As Dr. Sewa Sathi, I'm processing your request and will give you a comprehensive response. Your well-being is my priority.",
+                    "I'm here to support you through this. Let me help you understand this better and provide you with the assistance you need.",
+                    "That's an important point you've raised. I'm considering all aspects of your situation and will provide you with thoughtful, helpful guidance.",
+                    "I'm listening carefully to what you're saying. As your AI medical assistant, I want to make sure I give you the best possible help.",
+                    "I understand this is important to you. Let me think about this from a medical and accessibility perspective to give you the most helpful response.",
+                    "I'm here to help you work through this. As Dr. Sewa Sathi, I'm committed to providing you with intelligent, caring assistance."
+                ];
+                
+                return intelligentResponses[Math.floor(Math.random() * intelligentResponses.length)];
+            }
+
+            startVoiceInput() {
+                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    const recognition = new SpeechRecognition();
+                    
+                    recognition.continuous = false;
+                    recognition.interimResults = false;
+                    recognition.lang = 'en-US';
+                    
+                    recognition.onstart = () => {
+                        document.getElementById('voice-status').style.display = 'flex';
+                    };
+                    
+                    recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        document.getElementById('message-input').value = transcript;
+                        this.sendMessage();
+                    };
+                    
+                    recognition.onend = () => {
+                        document.getElementById('voice-status').style.display = 'none';
+                    };
+                    
+                    recognition.onerror = (event) => {
+                        console.error('Voice recognition error:', event.error);
+                        document.getElementById('voice-status').style.display = 'none';
+                    };
+                    
+                    recognition.start();
+                } else {
+                    alert('Voice recognition not supported in this browser. Please use Chrome or Edge.');
+                }
+            }
+
+            saveMessages() {
+                localStorage.setItem('sewa_sathi_messages', JSON.stringify(this.messages));
+            }
+
+            loadMessages() {
+                const saved = localStorage.getItem('sewa_sathi_messages');
+                if (saved) {
+                    this.messages = JSON.parse(saved);
+                    this.displayMessages();
+                }
+            }
+
+            displayMessages() {
+                const messagesContainer = document.getElementById('chat-messages');
+                messagesContainer.innerHTML = '';
+                
+                this.messages.forEach(msg => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `${msg.sender}-message`;
+                    
+                    const bubble = document.createElement('div');
+                    bubble.className = `message-bubble ${msg.sender}-bubble`;
+                    bubble.innerHTML = `<p>${msg.text}</p>`;
+                    
+                    messageDiv.appendChild(bubble);
+                    messagesContainer.appendChild(messageDiv);
+                });
+                
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+
+        // Voice Command System
+        class VoiceCommandSystem {
+            constructor() {
+                this.recognition = null;
+                this.isListening = false;
+                this.isSupported = false;
+                this.init();
+            }
+
+            init() {
+                try {
+                    // Check for speech recognition support
+                    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                        this.isSupported = true;
+                        this.setupRecognition();
+                    } else {
+                        console.warn('Speech recognition not supported in this browser');
+                    }
+                } catch (error) {
+                    console.error('Voice command initialization error:', error);
+                    this.isSupported = false;
+                }
+            }
+
+            setupRecognition() {
+                try {
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    this.recognition = new SpeechRecognition();
+                    this.recognition.continuous = false;
+                    this.recognition.interimResults = true;
+                    this.recognition.lang = 'en-US';
+
+                    this.recognition.onstart = () => {
+                        try {
+                            this.isListening = true;
+                            this.updateVoiceStatus(true);
+                            console.log('Voice recognition started');
+                        } catch (error) {
+                            console.error('Voice start error:', error);
+                        }
+                    };
+
+                    this.recognition.onresult = (event) => {
+                        try {
+                            let finalTranscript = '';
+                            let interimTranscript = '';
+
+                            for (let i = event.resultIndex; i < event.results.length; i++) {
+                                const transcript = event.results[i][0].transcript;
+                                if (event.results[i].isFinal) {
+                                    finalTranscript += transcript;
+                                } else {
+                                    interimTranscript += transcript;
+                                }
+                            }
+
+                            // Show interim results
+                            if (interimTranscript) {
+                                this.showInterimResult(interimTranscript);
+                            }
+
+                            // Process final result
+                            if (finalTranscript) {
+                                this.processVoiceCommand(finalTranscript.toLowerCase());
+                            }
+                        } catch (error) {
+                            console.error('Voice result error:', error);
+                        }
+                    };
+
+                    this.recognition.onerror = (event) => {
+                        console.error('Voice recognition error:', event.error);
+                        this.isListening = false;
+                        this.updateVoiceStatus(false);
+                    };
+
+                    this.recognition.onend = () => {
+                        try {
+                            this.isListening = false;
+                            this.updateVoiceStatus(false);
+                        } catch (error) {
+                            console.error('Voice end error:', error);
+                        }
+                    };
+                } catch (error) {
+                    console.error('Voice setup error:', error);
+                    this.isSupported = false;
+                }
+            }
+
+            startListening() {
+                try {
+                    if (this.isSupported && this.recognition && !this.isListening) {
+                        this.recognition.start();
+                    } else if (!this.isSupported) {
+                        console.log('Voice recognition not supported in this browser');
+                        // Don't show alert, just log
+                    } else if (this.isListening) {
+                        console.log('Voice recognition already listening');
+                    }
+                } catch (error) {
+                    console.error('Error starting voice recognition:', error);
+                    this.isListening = false;
+                }
+            }
+
+            stopListening() {
+                if (this.recognition && this.isListening) {
+                    this.recognition.stop();
+                }
+            }
+
+            processVoiceCommand(command) {
+                console.log('Processing voice command:', command);
+                
+                // Emergency commands
+                if (command.includes('help me') || command.includes('emergency') || command.includes('please help')) {
+                    this.handleEmergencyCommand(command);
+                }
+                // Navigation commands
+                else if (command.includes('go to') || command.includes('navigate to')) {
+                    this.handleNavigationCommand(command);
+                }
+                // Search commands
+                else if (command.includes('search') || command.includes('find')) {
+                    this.handleSearchCommand(command);
+                }
+                // Accessibility commands
+                else if (command.includes('high contrast') || command.includes('contrast')) {
+                    this.toggleHighContrast();
+                }
+                else if (command.includes('large text') || command.includes('bigger text')) {
+                    this.toggleLargeText();
+                }
+                else if (command.includes('dark mode') || command.includes('dark')) {
+                    this.toggleDarkMode();
+                }
+                else if (command.includes('read') || command.includes('speak')) {
+                    this.readCurrentContent();
+                }
+                // Sewa Sathi commands
+                else if (command.includes('sewa sathi') || command.includes('assistant') || command.includes('ai')) {
+                    this.openSewaSathi();
+                }
+                // Settings commands
+                else if (command.includes('settings') || command.includes('preferences')) {
+                    this.openSettings();
+                }
+                // General help
+                else if (command.includes('help') || command.includes('what can you do')) {
+                    this.showVoiceHelp();
+                }
+                else {
+                    // Default: try to search for the command
+                    this.performSearch(command);
+                }
+            }
+
+            handleEmergencyCommand(command) {
+                if (command.includes('police')) {
+                    this.speak('Calling emergency police number immediately');
+                    callEmergency('100');
+                } else if (command.includes('fire')) {
+                    this.speak('Calling emergency fire number immediately');
+                    callEmergency('101');
+                } else if (command.includes('ambulance') || command.includes('medical')) {
+                    this.speak('Calling emergency ambulance number immediately');
+                    callEmergency('102');
+                } else {
+                    this.speak('I understand you need help. Calling disability support number immediately');
+                    callEmergency('9768442380');
+                }
+            }
+
+            handleNavigationCommand(command) {
+                const sections = {
+                    'home': '#home',
+                    'features': '#features',
+                    'dashboard': '#dashboard',
+                    'education': '#education',
+                    'emergency': '#emergency',
+                    'medical': '#medical',
+                    'transport': '#transport',
+                    'news': '#news',
+                    'community': '#community',
+                    'resources': '#resources',
+                    'contact': '#contact',
+                    'demo': '#demo',
+                    'ai features': '#ai-features',
+                    'statistics': '#statistics',
+                    'testimonials': '#testimonials'
+                };
+
+                for (const [keyword, selector] of Object.entries(sections)) {
+                    if (command.includes(keyword)) {
+                        const element = document.querySelector(selector);
+                        if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                            this.speak(`Navigating to ${keyword} section`);
+                            return;
+                        }
+                    }
+                }
+                
+                this.speak('I could not find that section. Try saying "go to home" or "navigate to features"');
+            }
+
+            handleSearchCommand(command) {
+                const searchInput = document.getElementById('search-input');
+                if (searchInput) {
+                    const searchTerm = command.replace(/search|find/gi, '').trim();
+                    searchInput.value = searchTerm;
+                    searchInput.focus();
+                    this.speak(`Searching for ${searchTerm}`);
+                }
+            }
+
+            toggleHighContrast() {
+                document.body.classList.toggle('high-contrast');
+                const isActive = document.body.classList.contains('high-contrast');
+                this.speak(isActive ? 'High contrast mode enabled' : 'High contrast mode disabled');
+            }
+
+            toggleLargeText() {
+                document.body.classList.toggle('large-text');
+                const isActive = document.body.classList.contains('large-text');
+                this.speak(isActive ? 'Large text mode enabled' : 'Large text mode disabled');
+            }
+
+            toggleDarkMode() {
+                document.body.classList.toggle('dark-mode');
+                const isActive = document.body.classList.contains('dark-mode');
+                this.speak(isActive ? 'Dark mode enabled' : 'Dark mode disabled');
+            }
+
+            readCurrentContent() {
+                const focusedElement = document.activeElement;
+                let content = '';
+                
+                if (focusedElement && focusedElement.textContent) {
+                    content = focusedElement.textContent;
+                } else {
+                    const mainContent = document.querySelector('main');
+                    content = mainContent ? mainContent.textContent.substring(0, 500) + '...' : 'No content found';
+                }
+                
+                this.speak(content);
+            }
+
+            openSewaSathi() {
+                const sewaSathiToggle = document.getElementById('sewa-sathi-toggle');
+                if (sewaSathiToggle) {
+                    sewaSathiToggle.click();
+                    this.speak('Opening Sewa Sathi assistant');
+                }
+            }
+
+            openSettings() {
+                const settingsBtn = document.getElementById('settings-btn');
+                if (settingsBtn) {
+                    settingsBtn.click();
+                    this.speak('Opening settings panel');
+                }
+            }
+
+            performSearch(query) {
+                const searchInput = document.getElementById('search-input');
+                if (searchInput) {
+                    searchInput.value = query;
+                    searchInput.focus();
+                    this.speak(`Searching for ${query}`);
+                }
+            }
+
+            showVoiceHelp() {
+                const helpText = `
+                    Available voice commands:
+                    - Say "help me" for emergency assistance
+                    - Say "go to [section name]" to navigate
+                    - Say "search [term]" to search
+                    - Say "high contrast" to toggle contrast
+                    - Say "large text" to toggle text size
+                    - Say "dark mode" to toggle dark theme
+                    - Say "read" to read current content
+                    - Say "sewa sathi" to open assistant
+                    - Say "settings" to open settings
+                `;
+                this.speak(helpText);
+            }
+
+            speak(text) {
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.rate = 0.9;
+                    utterance.pitch = 1.0;
+                    utterance.volume = 0.8;
+                    utterance.lang = 'en-US';
+                    
+                    // Use the best available voice
+                    const voices = speechSynthesis.getVoices();
+                    const preferredVoice = voices.find(voice => 
+                        voice.lang.startsWith('en') && voice.name.includes('Google')
+                    ) || voices.find(voice => voice.lang.startsWith('en'));
+                    
+                    if (preferredVoice) {
+                        utterance.voice = preferredVoice;
+                    }
+                    
+                    speechSynthesis.speak(utterance);
+                }
+            }
+
+            showInterimResult(text) {
+                // Show interim results in a temporary element
+                let interimElement = document.getElementById('voice-interim');
+                if (!interimElement) {
+                    interimElement = document.createElement('div');
+                    interimElement.id = 'voice-interim';
+                    interimElement.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: rgba(0, 102, 204, 0.9);
+                        color: white;
+                        padding: 10px 20px;
+                        border-radius: 20px;
+                        font-size: 16px;
+                        z-index: 10000;
+                        max-width: 300px;
+                        text-align: center;
+                    `;
+                    document.body.appendChild(interimElement);
+                }
+                interimElement.textContent = `Listening: ${text}`;
+            }
+
+            updateVoiceStatus(listening) {
+                const voiceStatus = document.querySelector('.voice-status');
+                if (voiceStatus) {
+                    voiceStatus.style.display = listening ? 'flex' : 'none';
+                }
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // Initialize systems
+                window.settingsPanel = new SettingsPanel();
+                window.sewaSathiMessenger = new SewaSathiMessenger();
+                window.voiceCommandSystem = new VoiceCommandSystem();
+
+                // Voice command button
+                const voiceBtn = document.getElementById('voice-command-btn');
+                if (voiceBtn) {
+                    voiceBtn.addEventListener('click', function() {
+                        try {
+                            if (window.voiceCommandSystem && window.voiceCommandSystem.isSupported) {
+                                window.voiceCommandSystem.startListening();
+                            } else {
+                                alert('Voice recognition not supported in this browser. Please use Chrome or Edge.');
+                            }
+                        } catch (error) {
+                            console.error('Voice command error:', error);
+                        }
+                    });
+                }
+
+                // Global voice command activation (Alt + V)
+                document.addEventListener('keydown', function(e) {
+                    try {
+                        if (e.altKey && e.key === 'v') {
+                            e.preventDefault();
+                            if (window.voiceCommandSystem && window.voiceCommandSystem.isSupported) {
+                                window.voiceCommandSystem.startListening();
+                            } else {
+                                alert('Voice recognition not supported in this browser. Please use Chrome or Edge.');
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Keyboard shortcut error:', error);
+                    }
+                });
+
+                // Announce voice commands are ready
+                setTimeout(function() {
+                    try {
+                        if (window.voiceCommandSystem && window.voiceCommandSystem.isSupported) {
+                            console.log('Voice commands ready! Press Alt + V to start voice recognition.');
+                        }
+                    } catch (error) {
+                        console.error('Voice announcement error:', error);
+                    }
+                }, 2000);
+
+                console.log('All systems initialized successfully');
+            } catch (error) {
+                console.error('Initialization error:', error);
+                // Don't show alert to user, just log the error
+            }
+        });
+    </script>
+</body>
+</html>
