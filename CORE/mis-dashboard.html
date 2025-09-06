@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Education MIS - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .mis-container {
+            min-height: 100vh;
+            background: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .mis-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .user-details h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+        
+        .user-details p {
+            margin: 0;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .logout-btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e1e5e9;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e1e5e9;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        .ai-chat {
+            background: #f8f9ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .ai-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .ai-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .ai-message {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .ai-input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #e1e5e9;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .exam-schedule {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .exam-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ffeaa7;
+        }
+        
+        .exam-item:last-child {
+            border-bottom: none;
+        }
+        
+        .exam-name {
+            font-weight: 600;
+            color: #856404;
+        }
+        
+        .exam-date {
+            font-size: 12px;
+            color: #856404;
+        }
+        
+        .grade-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        .grade-item:last-child {
+            border-bottom: none;
+        }
+        
+        .subject-name {
+            font-weight: 500;
+        }
+        
+        .grade-score {
+            font-weight: 600;
+            color: #28a745;
+        }
+        
+        .notification-item {
+            display: flex;
+            align-items: start;
+            padding: 10px 0;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+        
+        .notification-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .notification-time {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .accessibility-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .accessibility-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 2px;
+            font-size: 12px;
+        }
+        
+        .student-specific {
+            display: none;
+        }
+        
+        .parent-specific {
+            display: none;
+        }
+        
+        .teacher-specific {
+            display: none;
+        }
+        
+        .admin-specific {
+            display: none;
+        }
+        
+        .show {
+            display: block !important;
+        }
+        
+        .ai-thinking {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .ai-thinking .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .high-contrast {
+            background: #000 !important;
+            color: #fff !important;
+        }
+        
+        .high-contrast .dashboard-card {
+            background: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        
+        .large-text {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mis-container">
+        <!-- Header -->
+        <div class="mis-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1>🎓 Accessible Education MIS</h1>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">👤</div>
+                    <div class="user-details">
+                        <h3 id="user-name">Loading...</h3>
+                        <p id="user-type">Loading...</p>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Accessibility Panel -->
+        <div class="accessibility-panel">
+            <button class="accessibility-btn" onclick="toggleHighContrast()">🌓 High Contrast</button>
+            <button class="accessibility-btn" onclick="toggleLargeText()">🔍 Large Text</button>
+            <button class="accessibility-btn" onclick="toggleTTS()">🔊 TTS</button>
+            <button class="accessibility-btn" onclick="toggleVoiceCommands()">🎤 Voice</button>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Student Dashboard -->
+            <div id="student-dashboard" class="student-specific">
+                <h2>Student Dashboard</h2>
+                <div class="dashboard-grid">
+                    <!-- Academic Progress -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #e3f2fd;">📊</div>
+                            <h3 class="card-title">Academic Progress</h3>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Overall Grade</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Subjects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">8</div>
+                                <div class="stat-label">Completed</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">4</div>
+                                <div class="stat-label">Pending</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                        <p style="text-align: center; margin-top: 10px; color: #666;">Great progress! Keep it up!</p>
+                    </div>
+                    
+                    <!-- Recent Grades -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #e8f5e8;">🎯</div>
+                            <h3 class="card-title">Recent Grades</h3>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">Mathematics</span>
+                            <span class="grade-score">A+ (95%)</span>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">English Literature</span>
+                            <span class="grade-score">A (88%)</span>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">Science</span>
+                            <span class="grade-score">B+ (82%)</span>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">History</span>
+                            <span class="grade-score">A- (90%)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Upcoming Exams -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #fff3cd;">📅</div>
+                            <h3 class="card-title">Upcoming Exams</h3>
+                        </div>
+                        <div class="exam-schedule">
+                            <div class="exam-item">
+                                <div>
+                                    <div class="exam-name">Mathematics Final</div>
+                                    <div class="exam-date">Dec 15, 2024 - 10:00 AM</div>
+                                </div>
+                            </div>
+                            <div class="exam-item">
+                                <div>
+                                    <div class="exam-name">Science Practical</div>
+                                    <div class="exam-date">Dec 18, 2024 - 2:00 PM</div>
+                                </div>
+                            </div>
+                            <div class="exam-item">
+                                <div>
+                                    <div class="exam-name">English Oral</div>
+                                    <div class="exam-date">Dec 20, 2024 - 11:00 AM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Study Assistant -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #f3e5f5;">🤖</div>
+                            <h3 class="card-title">AI Study Assistant</h3>
+                        </div>
+                        <div class="ai-chat">
+                            <div class="ai-header">
+                                <div class="ai-avatar">AI</div>
+                                <span>Your Personal Study Assistant</span>
+                            </div>
+                            <div class="ai-message">
+                                Hello! I'm here to help you with your studies. I can explain concepts, create study plans, and answer questions about your subjects. What would you like to know?
+                            </div>
+                            <div class="ai-thinking" id="ai-thinking">
+                                <div class="spinner"></div>
+                                <p>AI is thinking...</p>
+                            </div>
+                            <input type="text" class="ai-input" id="ai-input" placeholder="Ask me anything about your studies..." onkeypress="handleAIInput(event)">
+                        </div>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #ffebee;">🔔</div>
+                            <h3 class="card-title">Notifications</h3>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">📚</div>
+                            <div class="notification-content">
+                                <div class="notification-title">New Assignment Posted</div>
+                                <div class="notification-time">2 hours ago</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">🎯</div>
+                            <div class="notification-content">
+                                <div class="notification-title">Grade Updated</div>
+                                <div class="notification-time">1 day ago</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">📅</div>
+                            <div class="notification-content">
+                                <div class="notification-title">Exam Schedule Changed</div>
+                                <div class="notification-time">2 days ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Parent Dashboard -->
+            <div id="parent-dashboard" class="parent-specific">
+                <h2>Parent Dashboard</h2>
+                <div class="dashboard-grid">
+                    <!-- Child Progress Overview -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #e3f2fd;">👨‍👩‍👧‍👦</div>
+                            <h3 class="card-title">Child Progress Overview</h3>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Overall Grade</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">92%</div>
+                                <div class="stat-label">Attendance</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Assignments</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Upcoming Exams</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Subject-wise Performance -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #e8f5e8;">📈</div>
+                            <h3 class="card-title">Subject-wise Performance</h3>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">Mathematics</span>
+                            <span class="grade-score">A+ (95%)</span>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">English Literature</span>
+                            <span class="grade-score">A (88%)</span>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">Science</span>
+                            <span class="grade-score">B+ (82%)</span>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">History</span>
+                            <span class="grade-score">A- (90%)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Teacher Communication -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #fff3cd;">💬</div>
+                            <h3 class="card-title">Teacher Communication</h3>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">👩‍🏫</div>
+                            <div class="notification-content">
+                                <div class="notification-title">Math Teacher: Great improvement in algebra!</div>
+                                <div class="notification-time">1 day ago</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">📚</div>
+                            <div class="notification-content">
+                                <div class="notification-title">English Teacher: Please practice reading aloud</div>
+                                <div class="notification-time">3 days ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Teacher Dashboard -->
+            <div id="teacher-dashboard" class="teacher-specific">
+                <h2>Teacher Dashboard</h2>
+                <div class="dashboard-grid">
+                    <!-- Class Overview -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #e3f2fd;">👩‍🏫</div>
+                            <h3 class="card-title">Class Overview</h3>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">25</div>
+                                <div class="stat-label">Total Students</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">8</div>
+                                <div class="stat-label">Visually Impaired</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">92%</div>
+                                <div class="stat-label">Average Grade</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Pending Grades</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Student Performance -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #e8f5e8;">📊</div>
+                            <h3 class="card-title">Student Performance</h3>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">Sarah Johnson (VI)</span>
+                            <span class="grade-score">A+ (98%)</span>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">Mike Chen (VI)</span>
+                            <span class="grade-score">A (92%)</span>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">Emma Davis (VI)</span>
+                            <span class="grade-score">A- (88%)</span>
+                        </div>
+                        <div class="grade-item">
+                            <span class="subject-name">Alex Brown (VI)</span>
+                            <span class="grade-score">B+ (85%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Dashboard -->
+            <div id="admin-dashboard" class="admin-specific">
+                <h2>Admin Dashboard</h2>
+                <div class="dashboard-grid">
+                    <!-- System Overview -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #e3f2fd;">⚙️</div>
+                            <h3 class="card-title">System Overview</h3>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">150</div>
+                                <div class="stat-label">Total Users</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">45</div>
+                                <div class="stat-label">Visually Impaired</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">25</div>
+                                <div class="stat-label">Teachers</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">98%</div>
+                                <div class="stat-label">System Uptime</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Analytics -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: #f3e5f5;">🤖</div>
+                            <h3 class="card-title">AI Analytics</h3>
+                        </div>
+                        <div class="ai-chat">
+                            <div class="ai-header">
+                                <div class="ai-avatar">AI</div>
+                                <span>System AI Assistant</span>
+                            </div>
+                            <div class="ai-message">
+                                System is running optimally. All accessibility features are active. 45 visually impaired students are successfully using the platform with 98% satisfaction rate.
+                            </div>
+                            <div class="ai-thinking" id="admin-ai-thinking">
+                                <div class="spinner"></div>
+                                <p>AI is analyzing...</p>
+                            </div>
+                            <input type="text" class="ai-input" id="admin-ai-input" placeholder="Ask about system performance..." onkeypress="handleAdminAIInput(event)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize dashboard based on user type
+        document.addEventListener('DOMContentLoaded', () => {
+            const userData = JSON.parse(localStorage.getItem('mis-user'));
+            if (!userData) {
+                window.location.href = 'mis-login.html';
+                return;
+            }
+            
+            // Update user info
+            document.getElementById('user-name').textContent = userData.username;
+            document.getElementById('user-type').textContent = userData.type.charAt(0).toUpperCase() + userData.type.slice(1);
+            document.getElementById('user-avatar').textContent = getAvatarForType(userData.type);
+            
+            // Show appropriate dashboard
+            const dashboardId = userData.type + '-dashboard';
+            document.getElementById(dashboardId).classList.add('show');
+            
+            // Initialize accessibility features
+            initializeAccessibility();
+        });
+        
+        function getAvatarForType(type) {
+            const avatars = {
+                'student': '👨‍🎓',
+                'parent': '👨‍👩‍👧‍👦',
+                'teacher': '👩‍🏫',
+                'admin': '⚙️'
+            };
+            return avatars[type] || '👤';
+        }
+        
+        function logout() {
+            localStorage.removeItem('mis-user');
+            window.location.href = 'mis-login.html';
+        }
+        
+        // Accessibility functions
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+        
+        function toggleLargeText() {
+            document.body.classList.toggle('large-text');
+        }
+        
+        function toggleTTS() {
+            // Toggle text-to-speech
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance('Text-to-speech enabled');
+                speechSynthesis.speak(utterance);
+            }
+        }
+        
+        function toggleVoiceCommands() {
+            // Toggle voice commands
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.start();
+                
+                recognition.onresult = (event) => {
+                    const command = event.results[0][0].transcript.toLowerCase();
+                    handleVoiceCommand(command);
+                };
+            }
+        }
+        
+        function handleVoiceCommand(command) {
+            if (command.includes('logout')) {
+                logout();
+            } else if (command.includes('help')) {
+                speak('Available commands: logout, help, read grades, read schedule');
+            } else if (command.includes('read grades')) {
+                readGrades();
+            } else if (command.includes('read schedule')) {
+                readSchedule();
+            }
+        }
+        
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                speechSynthesis.speak(utterance);
+            }
+        }
+        
+        function readGrades() {
+            const grades = document.querySelectorAll('.grade-item');
+            let gradeText = 'Your grades are: ';
+            grades.forEach(grade => {
+                const subject = grade.querySelector('.subject-name').textContent;
+                const score = grade.querySelector('.grade-score').textContent;
+                gradeText += subject + ' ' + score + ', ';
+            });
+            speak(gradeText);
+        }
+        
+        function readSchedule() {
+            const exams = document.querySelectorAll('.exam-item');
+            let scheduleText = 'Your upcoming exams are: ';
+            exams.forEach(exam => {
+                const name = exam.querySelector('.exam-name').textContent;
+                const date = exam.querySelector('.exam-date').textContent;
+                scheduleText += name + ' on ' + date + ', ';
+            });
+            speak(scheduleText);
+        }
+        
+        // AI Chat functionality
+        function handleAIInput(event) {
+            if (event.key === 'Enter') {
+                const input = document.getElementById('ai-input');
+                const question = input.value.trim();
+                if (question) {
+                    showAIThinking();
+                    setTimeout(() => {
+                        const response = generateAIResponse(question);
+                        addAIMessage(response);
+                        hideAIThinking();
+                        input.value = '';
+                    }, 2000);
+                }
+            }
+        }
+        
+        function handleAdminAIInput(event) {
+            if (event.key === 'Enter') {
+                const input = document.getElementById('admin-ai-input');
+                const question = input.value.trim();
+                if (question) {
+                    showAdminAIThinking();
+                    setTimeout(() => {
+                        const response = generateAdminAIResponse(question);
+                        addAdminAIMessage(response);
+                        hideAdminAIThinking();
+                        input.value = '';
+                    }, 2000);
+                }
+            }
+        }
+        
+        function showAIThinking() {
+            document.getElementById('ai-thinking').style.display = 'block';
+        }
+        
+        function hideAIThinking() {
+            document.getElementById('ai-thinking').style.display = 'none';
+        }
+        
+        function showAdminAIThinking() {
+            document.getElementById('admin-ai-thinking').style.display = 'block';
+        }
+        
+        function hideAdminAIThinking() {
+            document.getElementById('admin-ai-thinking').style.display = 'none';
+        }
+        
+        function addAIMessage(message) {
+            const aiChat = document.querySelector('.ai-chat');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'ai-message';
+            messageDiv.textContent = message;
+            aiChat.appendChild(messageDiv);
+        }
+        
+        function addAdminAIMessage(message) {
+            const aiChat = document.querySelector('#admin-dashboard .ai-chat');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'ai-message';
+            messageDiv.textContent = message;
+            aiChat.appendChild(messageDiv);
+        }
+        
+        function generateAIResponse(question) {
+            const responses = [
+                "That's a great question! Let me help you understand this concept better. Would you like me to break it down into simpler terms?",
+                "I can see you're working hard on this topic. Based on your current progress, I recommend focusing on the fundamentals first.",
+                "Excellent question! This is a common area where students need extra practice. Let me create a study plan for you.",
+                "I understand your confusion. Let me explain this step by step with examples that will make it clearer.",
+                "That's a challenging topic! Don't worry, with consistent practice, you'll master it. Here's how we can approach it together."
+            ];
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+        
+        function generateAdminAIResponse(question) {
+            const responses = [
+                "System analysis complete. All accessibility features are functioning optimally. 98% user satisfaction rate maintained.",
+                "Database performance is excellent. All student records are synchronized and accessible. No issues detected.",
+                "AI learning algorithms are adapting well to user patterns. Personalized recommendations are 85% accurate.",
+                "Security protocols are active. All user data is encrypted and protected. System integrity maintained.",
+                "Accessibility compliance: WCAG 2.1 AA standards met. Screen reader compatibility: 100%. Voice commands: 99.2% accuracy."
+            ];
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+        
+        function initializeAccessibility() {
+            // Auto-enable TTS for visually impaired users
+            const userData = JSON.parse(localStorage.getItem('mis-user'));
+            if (userData && userData.type === 'student') {
+                setTimeout(() => {
+                    speak('Welcome to your student dashboard. I will help you navigate through your academic information.');
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
+
